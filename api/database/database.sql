@@ -5,7 +5,7 @@ USE todo_db;
 CREATE TABLE todos(
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     task VARCHAR(50),
-    isFinished BIT DEFAULT 0,
+    isFinished BOOLEAN DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

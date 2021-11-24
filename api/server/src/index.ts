@@ -4,7 +4,6 @@ import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
 import todoRoutes from './routes/todoRoutes';
-import pool from './database';
 
 class Server{
     public app: Application;
@@ -26,6 +25,7 @@ class Server{
         this.app.use(morgan('dev'));
         this.app.use(cors());
         this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: true }));
     }
 
     routes(): void{

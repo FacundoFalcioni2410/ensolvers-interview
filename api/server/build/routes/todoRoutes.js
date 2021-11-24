@@ -13,6 +13,8 @@ class TodoRoutes {
     config() {
         this.router.get('/', todoController_1.default.get);
         this.router.post('/', todoController_1.default.add);
+        this.router.put('/:id', todoController_1.default.update);
+        this.router.delete('/:id', todoController_1.default.delete);
     }
 }
 const todoRoutes = new TodoRoutes();

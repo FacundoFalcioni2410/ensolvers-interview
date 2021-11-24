@@ -14,7 +14,7 @@ class TodoRoutes {
         this.router.get('/', todoController_1.default.get);
         this.router.post('/', todoController_1.default.add);
         this.router.put('/:id', todoController_1.default.update);
-        this.router.delete('/:id', todoController_1.default.delete);
+        this.router.delete('/:id', todoController_1.default.deleteById);
     }
 }
 const todoRoutes = new TodoRoutes();

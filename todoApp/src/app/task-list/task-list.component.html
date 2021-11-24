@@ -1,0 +1,50 @@
+<div class="container mt-3">
+  <div class="table-wrapper" *ngIf="!editMode; else edit">
+    <h4>To-Do List</h4>
+    <table class="table table-bordered">
+      <tbody>
+        <tr *ngFor="let item of this.tasks">
+          <td>
+            <mat-checkbox color="warn" [checked]="item.isFinished" (change)="finishTask(item)"></mat-checkbox>
+          </td>
+          <td>
+            {{item.task}}
+          </td>
+          <td>
+            <span class="text-primary" style="cursor: pointer;" (click)="beginEditMode(item)">
+              Edit
+            </span>
+          </td>
+          <td>
+            <span class="text-danger" style="cursor: pointer;" (click)="deleteToDo(item)">
+              Remove
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>New task</mat-label>
+        <input matInput type="text" [(ngModel)]="newText">
+      </mat-form-field>
+      <button class="btn btn-primary mb-2 ms-2" (click)="addTask()">Add</button>
+    </div>
+  </div>
+  <ng-template #edit>
+      <span>Editing task "{{taskToEdit.task}}"</span>
+      <mat-form-field class="example-form-field d-block" appearance="fill">
+      <mat-label>{{taskToEdit.task}}</mat-label>
+        <input matInput type="text" [(ngModel)]="newText">
+      </mat-form-field>
+      <button class="btn btn-primary mb-2 ms-2" (click)="updateToDo()">Save</button>
+      <button class="btn btn-primary mb-2 ms-2" (click)="editMode = false;">Cancel</button>
+  </ng-template>
+  <!-- <div *ngIf="editMode">
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>New task</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+    <button class="btn btn-primary mb-2 ms-2">Add</button>
+  </div> -->
+</div>

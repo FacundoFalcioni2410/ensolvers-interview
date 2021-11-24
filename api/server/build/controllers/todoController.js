@@ -15,9 +15,11 @@ class TodoController {
         res.json({ message: 'Todo saved' });
     }
     update(req, res) {
-        const { task } = req.body;
-        console.log(task, req.params.id);
-        database_1.default.query(`UPDATE todos SET task = ${task} where id = ${req.params.id}`, (err, results, fields) => {
+        const { task, isFinished } = req.body;
+        console.log(isFinished);
+        console.log(task);
+        database_1.default.query(`UPDATE todos SET task = ?, isFinished = ? where id = ?`, [task, isFinished, req.params.id], (err, results, fields) => {
+            console.log(err, results, fields);
             if (!err) {
                 if (results.changedRows) {
                     res.json({ message: 'Task updated' });
@@ -28,8 +30,8 @@ class TodoController {
             }
         });
     }
-    delete(req, res) {
-        database_1.default.query(`DELETE FROM todos where id = ${req.params.id}`, (err, results, fields) => {
+    deleteById(req, res) {
+        database_1.default.query(`DELETE FROM todos where id = ?`, [req.params.id], (err, results, fields) => {
             if (!err) {
                 if (results.affectedRows) {
                     res.json({ message: 'Task deleted' });

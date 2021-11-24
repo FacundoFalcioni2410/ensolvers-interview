@@ -14,21 +14,23 @@ class TodoController{
     }
 
     public update(req: Request, res: Response){
-        const { task } = req.body;
-        console.log(task, req.params.id);
-        pool.query(`UPDATE todos SET task = ${task} where id = ${req.params.id}`, (err, results, fields) =>{
+        const { task, isFinished } = req.body;
+        console.log(isFinished);
+        console.log(task);
+        pool.query(`UPDATE todos SET task = ?, isFinished = ? where id = ?`, [task, isFinished, req.params.id], (err, results, fields) =>{
+            console.log(err, results, fields);
             if(!err){
                 if(results.changedRows){
                     res.json({message: 'Task updated'});
                 }else{
                     res.json({message: "No task updated"});
                 }
-            }         
+            }
         });
     }
 
-    public delete(req: Request, res: Response){
-        pool.query(`DELETE FROM todos where id = ${req.params.id}`, (err, results, fields) =>{
+    public deleteById(req: Request, res: Response){
+        pool.query(`DELETE FROM todos where id = ?`, [req.params.id], (err, results, fields) =>{
             if(!err){
                 if(results.affectedRows){
                     res.json({message: 'Task deleted'});

@@ -2,6 +2,11 @@ import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
+import { config } from "dotenv";
+
+config();
+console.log(process.env.DATABASE_NAME);
+
 import todoRoutes from './routes/todoRoutes';
 import folderRoutes from './routes/folderRoutes';
 import userRoutes from './routes/userRoutes';

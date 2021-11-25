@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiFoldersService {
 
-  API = 'http://localhost:3000/todo/folder/';
+  API = 'https://ensolvers-api.herokuapp.com/todo/folder/';
 
   constructor(private http: HttpClient) { }
 

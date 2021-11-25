@@ -1,10 +1,14 @@
-<div class="container mt-3">
-    <h3 *ngIf="showFolders" class="mb-0">Folders</h3>
-    <h3 *ngIf="!showFolders" class="mb-0">Folders > {{currentFolder.title}}</h3>
+<div class="container">
+    <h3 *ngIf="showFolders" class="mb-0 d-inline">Folders</h3>
+    <div *ngIf="!showFolders" class="row">
+        <h3 class="mb-0 d-inline col-md-9 col-12">Folders > {{currentFolder.title}}</h3>
+        <button mat-button color="accent" class="col-md-2 col-12" (click)="showFolders = true">Go back</button>
+    </div>
     <div *ngIf="showFolders; else toDos">
         <app-folder-list (sendFolder)="receiveFolder($event)"></app-folder-list>
     </div>
     <ng-template #toDos>
         <app-task-list [currentFolder]="this.currentFolder"></app-task-list>
     </ng-template>
+    <button mat-button color="accent" class="col-md-2 col-12" (click)="logout()">Log out</button>
 </div>

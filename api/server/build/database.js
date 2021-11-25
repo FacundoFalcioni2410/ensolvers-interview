@@ -5,10 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql_1 = __importDefault(require("mysql"));
 const pool = mysql_1.default.createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'todo_db',
-    password: ''
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    database: process.env.DATABASE_NAME,
+    password: process.env.DATABASE_PASSWORD,
 });
 pool.getConnection((err, connection) => {
     if (err) {

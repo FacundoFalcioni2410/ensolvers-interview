@@ -1,10 +1,10 @@
 import mysql from 'mysql';
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'todo_db',
-    password: ''
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    database: process.env.DATABASE_NAME,
+    password: process.env.DATABASE_PASSWORD,
 });
 
 pool.getConnection((err: any,connection: any) =>{

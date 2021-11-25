@@ -8,6 +8,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const todoRoutes_1 = __importDefault(require("./routes/todoRoutes"));
 const folderRoutes_1 = __importDefault(require("./routes/folderRoutes"));
+const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -29,6 +30,7 @@ class Server {
     routes() {
         this.app.use('/todo', todoRoutes_1.default);
         this.app.use('/todo/folder', folderRoutes_1.default);
+        this.app.use('/user', userRoutes_1.default);
     }
 }
 const server = new Server();

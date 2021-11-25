@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  API = 'http://localhost:3000/todo';
+  API = 'https://ensolvers-api.herokuapp.com/todo';
 
   constructor(private http: HttpClient) { }
 

@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import todoRoutes from './routes/todoRoutes';
 import folderRoutes from './routes/folderRoutes';
+import userRoutes from './routes/userRoutes';
 
 class Server{
     public app: Application;
@@ -19,7 +20,7 @@ class Server{
             console.log('Server running on port ', this.app.get('port'));
         });
     }
-
+    
     config(): void{
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(morgan('dev'));
@@ -31,6 +32,7 @@ class Server{
     routes(): void{
         this.app.use('/todo', todoRoutes);
         this.app.use('/todo/folder', folderRoutes);
+        this.app.use('/user', userRoutes);
     }
 } 
 

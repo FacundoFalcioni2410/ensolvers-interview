@@ -27,7 +27,10 @@ export class FolderListComponent implements OnInit {
   getFolders(){
     this.api.getFolders().then((res: any) =>{
       this.folders = res.data;
-    });
+    })
+    .catch((err =>{
+      console.log(err);
+    }));
   }
   
   addFolder(){
@@ -37,9 +40,12 @@ export class FolderListComponent implements OnInit {
       };
   
       this.api.addFolder(newFolder).then((res: any) =>{
-        this.newText = '';
         this.getFolders();
-      });
+        this.newText = '';
+      })
+      .catch((err =>{
+        console.log(err);
+      }));
     }
     else{
       this._snackBar.open('The folder must be at least 4 characters long', 'Close')._dismissAfter(3000);
@@ -49,6 +55,9 @@ export class FolderListComponent implements OnInit {
   deleteFolder(folder: any){
     this.api.deleteFolder(folder).then((res: any) =>{
       this.getFolders();
-    });
+    })
+    .catch((err =>{
+      console.log(err);
+    }));
   }
 }

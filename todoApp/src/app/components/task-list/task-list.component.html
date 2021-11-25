@@ -14,7 +14,7 @@
           </span>
         </td>
         <td>
-          <span class="text-danger" style="cursor: pointer;" (click)="deleteToDo(item)">
+          <span class="text-primary" style="cursor: pointer;" (click)="deleteToDo(item)">
             Remove
           </span>
         </td>
@@ -26,7 +26,7 @@
       <mat-label>New task</mat-label>
       <input matInput type="text" [(ngModel)]="newText">
     </mat-form-field>
-    <button class="btn btn-primary mb-2 ms-2" (click)="addTask()">Add</button>
+    <button mat-raised-button color="accent" class="mb-2 ms-2" (click)="addTask()">Add</button>
   </div>
 </div>
 
@@ -36,6 +36,6 @@
     <mat-label>{{taskToEdit.task}}</mat-label>
       <input matInput type="text" [(ngModel)]="newText">
     </mat-form-field>
-    <button class="btn btn-primary mb-2 ms-2" (click)="updateToDo()">Save</button>
-    <button class="btn btn-primary mb-2 ms-2" (click)="editMode = false;">Cancel</button>
+    <button mat-raised-button color="accent" class="me-2" (click)="updateToDo()">Save</button>
+    <button mat-raised-button color="accent" (click)="editMode = false;">Cancel</button>
 </ng-template>

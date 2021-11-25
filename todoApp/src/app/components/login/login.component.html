@@ -1,0 +1,23 @@
+<div class="container h-100">
+    <div class="text-center col-10 offset-1 col-md-6 offset-md-3">
+    <app-spinner *ngIf='loading'></app-spinner>
+    <div class="row align-items-center h-100">
+        
+            <h1>Facundo Falcioni - Ensolvers Interview</h1>
+            <h3>Login</h3>
+            <form [formGroup]="form" class="bg">
+                <mat-form-field class="mt-2 d-block px-2" appearance="fill">
+                    <mat-label class="text-color">Enter your email</mat-label>
+                    <input matInput formControlName='email'>
+                    <mat-error class="text-color" *ngIf="form.controls.email.invalid">{{getErrorMessageMail()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="d-block px-2 mt-2">
+                    <mat-label class="text-color">Enter your password</mat-label>
+                    <input matInput formControlName='password' type="password">
+                    <mat-error class="text-color mb-3" *ngIf="form.controls.password.invalid">{{getErrorMessagePassword()}}</mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" class="d-block mx-auto mb-2 mt-3" [disabled]="form.invalid" (click)="login()">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

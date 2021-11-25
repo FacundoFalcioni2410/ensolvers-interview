@@ -1,5 +1,5 @@
-Ensolvers to-dos  
-Ensolvers's interview
+# Ensolvers to-dos
+### Ensolvers's interview
 
 Visit the live deployed version clicking here: [Live deployed version](https://facundo-falcioni-ensolvers.herokuapp.com/)
 
@@ -11,14 +11,14 @@ DATABASE_NAME="bd name"
 DATABASE_PASSWORD="****"
 
 Inside api/server directory, run:
-npm install
+'npm install'
 
 This installs all dependecies needed
 
-npm run dev to initialize the server
+'npm run dev' to initialize the server
 
 Inside todoApp directory, run:
-npm install
+'npm install'
 
 To installs all dependecies needed
 

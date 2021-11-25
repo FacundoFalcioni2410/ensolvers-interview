@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import todoRoutes from './routes/todoRoutes';
+import folderRoutes from './routes/folderRoutes';
 
 class Server{
     public app: Application;
@@ -29,6 +30,7 @@ class Server{
 
     routes(): void{
         this.app.use('/todo', todoRoutes);
+        this.app.use('/todo/folder', folderRoutes);
     }
 } 
 

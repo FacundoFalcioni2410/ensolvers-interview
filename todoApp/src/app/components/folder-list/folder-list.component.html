@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+    <tbody>
+      <tr *ngFor="let item of this.folders">
+        <td>
+          {{item.title}}
+        </td>
+        <td>
+          <span class="text-primary" style="cursor: pointer;" (click)="sendSelectedFolder(item)">
+            View items
+          </span>
+        </td>
+        <td>
+          <span class="text-primary" style="cursor: pointer;" (click)="deleteFolder(item)">
+            Remove
+          </span>
+        </td>
+      </tr>
+    </tbody>
+</table>
+<div>
+<mat-form-field appearance="fill">
+    <mat-label>New folder</mat-label>
+    <input matInput type="text" [(ngModel)]="newText">
+</mat-form-field>
+<button class="btn btn-primary mb-2 ms-2" (click)="addFolder()">Add</button>
+</div>

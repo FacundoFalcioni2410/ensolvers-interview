@@ -6,20 +6,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 class TodoController {
     get(req, res) {
-        database_1.default.query('SELECT * FROM todos', (err, results, fields) => {
+        database_1.default.query('SELECT * FROM TODOs', (err, results, fields) => {
+            res.json({ data: results });
+        });
+    }
+    getByFolder(req, res) {
+        database_1.default.query('SELECT * FROM TODOs where folder_id = ?', [req.query.id], (err, results, fields) => {
             res.json({ data: results });
         });
     }
     add(req, res) {
-        database_1.default.query('INSERT INTO todos set ?', [req.body]);
+        database_1.default.query('INSERT INTO TODOs set ?', [req.body]);
         res.json({ message: 'Todo saved' });
     }
     update(req, res) {
         const { task, isFinished } = req.body;
-        console.log(isFinished);
-        console.log(task);
-        database_1.default.query(`UPDATE todos SET task = ?, isFinished = ? where id = ?`, [task, isFinished, req.params.id], (err, results, fields) => {
-            console.log(err, results, fields);
+        database_1.default.query(`UPDATE TODOs SET task = ?, isFinished = ? where id = ?`, [task, isFinished, req.params.id], (err, results, fields) => {
             if (!err) {
                 if (results.changedRows) {
                     res.json({ message: 'Task updated' });
@@ -31,7 +33,7 @@ class TodoController {
         });
     }
     deleteById(req, res) {
-        database_1.default.query(`DELETE FROM todos where id = ?`, [req.params.id], (err, results, fields) => {
+        database_1.default.query(`DELETE FROM TODOs where id = ?`, [req.params.id], (err, results, fields) => {
             if (!err) {
                 if (results.affectedRows) {
                     res.json({ message: 'Task deleted' });

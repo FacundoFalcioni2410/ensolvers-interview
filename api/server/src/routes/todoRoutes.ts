@@ -9,7 +9,7 @@ class TodoRoutes{
     }
 
     config(): void{
-        this.router.get('/', todoController.get);
+        this.router.get('/', todoController.getByFolder);
         this.router.post('/', todoController.add);
         this.router.put('/:id', todoController.update);
         this.router.delete('/:id', todoController.deleteById);

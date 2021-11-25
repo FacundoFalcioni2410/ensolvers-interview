@@ -12,7 +12,6 @@ const pool = mysql_1.default.createPool({
 });
 pool.getConnection((err, connection) => {
     if (err) {
-        console.log(err);
         throw err;
     }
     connection.release();

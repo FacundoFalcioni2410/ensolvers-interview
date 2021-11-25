@@ -1,0 +1,10 @@
+<div class="container mt-3">
+    <h3 *ngIf="showFolders" class="mb-0">Folders</h3>
+    <h3 *ngIf="!showFolders" class="mb-0">Folders > {{currentFolder.title}}</h3>
+    <div *ngIf="showFolders; else toDos">
+        <app-folder-list (sendFolder)="receiveFolder($event)"></app-folder-list>
+    </div>
+    <ng-template #toDos>
+        <app-task-list [currentFolder]="this.currentFolder"></app-task-list>
+    </ng-template>
+</div>

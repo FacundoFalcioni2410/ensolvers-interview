@@ -15,7 +15,6 @@ This project was created with the following versions:
 
 ### Frontend
 ##### Angular 12.2.11
-##### NodeJS 14.18.1
 
 ### Backend
 ##### Express 4.17.1
